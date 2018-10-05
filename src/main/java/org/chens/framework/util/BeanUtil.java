@@ -1,13 +1,14 @@
 package org.chens.framework.util;
 
 import com.google.common.collect.Lists;
+import org.chens.core.vo.PageResult;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
 /**
- *  不同对象，属性的互相转化类
+ * 不同对象，属性的互相转化类
  */
 public class BeanUtil {
 
@@ -27,7 +28,7 @@ public class BeanUtil {
 
     public static <S, T> List<T> do2bo4List(List<S> source, Class<T> targetClass) {
         List<T> result = Lists.newArrayList();
-        if(CollectionUtils.isEmpty(source)){
+        if (CollectionUtils.isEmpty(source)) {
             return result;
         }
         for (S obj : source) {
@@ -35,4 +36,5 @@ public class BeanUtil {
         }
         return result;
     }
+
 }

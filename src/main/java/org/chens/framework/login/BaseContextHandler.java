@@ -1,7 +1,7 @@
 package org.chens.framework.login;
 
+import org.chens.core.vo.UserInfo;
 import org.chens.framework.login.context.ContextConstants;
-import org.chens.framework.vo.UserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
