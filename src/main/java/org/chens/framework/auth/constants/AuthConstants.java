@@ -1,4 +1,4 @@
-package org.chens.framework.login.context;
+package org.chens.framework.auth.constants;
 
 /**
  * 通用常量
@@ -6,7 +6,7 @@ package org.chens.framework.login.context;
  * @author songchunlei@qq.com
  * @since 2018/3/8
  */
-public final class ContextConstants {
+public final class AuthConstants {
 
     /**
      * 上下文固定Key

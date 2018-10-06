@@ -1,7 +1,7 @@
-package org.chens.framework.login;
+package org.chens.framework.auth;
 
 import org.chens.core.vo.UserInfo;
-import org.chens.framework.login.context.ContextConstants;
+import org.chens.framework.auth.constants.AuthConstants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public class BaseContextHandler {
      * @return
      */
     public static String getUserId() {
-        Object value = get(ContextConstants.CONTEXT_KEY_USER_ID);
+        Object value = get(AuthConstants.CONTEXT_KEY_USER_ID);
         return returnObjectValue(value);
     }
 
@@ -32,7 +32,7 @@ public class BaseContextHandler {
      * @return
      */
     public static String getName() {
-        Object value = get(ContextConstants.CONTEXT_KEY_USER_NAME);
+        Object value = get(AuthConstants.CONTEXT_KEY_USER_NAME);
         return returnObjectValue(value);
     }
 
@@ -42,7 +42,7 @@ public class BaseContextHandler {
      * @return
      */
     public static String getUserName() {
-        Object value = get(ContextConstants.CONTEXT_KEY_USERNAME);
+        Object value = get(AuthConstants.CONTEXT_KEY_USERNAME);
         return returnObjectValue(value);
     }
 
@@ -52,7 +52,7 @@ public class BaseContextHandler {
      * @return
      */
     public static String getToken() {
-        Object value = get(ContextConstants.CONTEXT_KEY_USER_TOKEN);
+        Object value = get(AuthConstants.CONTEXT_KEY_USER_TOKEN);
         return returnObjectValue(value);
     }
 
@@ -62,7 +62,7 @@ public class BaseContextHandler {
      * @return
      */
     public static String getTenantId() {
-        Object value = get(ContextConstants.CONTEXT_KEY_USER_TANENTID);
+        Object value = get(AuthConstants.CONTEXT_KEY_USER_TANENTID);
         return returnObjectValue(value);
     }
 
@@ -83,23 +83,23 @@ public class BaseContextHandler {
     }
 
     public static void setUserId(String userId) {
-        set(ContextConstants.CONTEXT_KEY_USER_ID, userId);
+        set(AuthConstants.CONTEXT_KEY_USER_ID, userId);
     }
 
     public static void setName(String name) {
-        set(ContextConstants.CONTEXT_KEY_USER_NAME, name);
+        set(AuthConstants.CONTEXT_KEY_USER_NAME, name);
     }
 
     public static void setUserName(String userName) {
-        set(ContextConstants.CONTEXT_KEY_USERNAME, userName);
+        set(AuthConstants.CONTEXT_KEY_USERNAME, userName);
     }
 
     public static void setToken(String token) {
-        set(ContextConstants.CONTEXT_KEY_USER_TOKEN, token);
+        set(AuthConstants.CONTEXT_KEY_USER_TOKEN, token);
     }
 
     public static void setTenantId(String tenantId) {
-        set(ContextConstants.CONTEXT_KEY_USER_TANENTID, tenantId);
+        set(AuthConstants.CONTEXT_KEY_USER_TANENTID, tenantId);
     }
 
     public static void setUserInfo(UserInfo userInfo) {

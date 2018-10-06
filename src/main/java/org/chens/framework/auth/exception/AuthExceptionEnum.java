@@ -1,4 +1,4 @@
-package org.chens.framework.login.exception;
+package org.chens.framework.auth.exception;
 
 import org.chens.core.enums.IBaseEnum;
 
@@ -8,7 +8,7 @@ import org.chens.core.enums.IBaseEnum;
  * @author songchunlei
  * @since 2018/3/8
  */
-public enum LoginExceptionEnum implements IBaseEnum {
+public enum AuthExceptionEnum implements IBaseEnum {
 
     /**
      * token异常
@@ -25,7 +25,7 @@ public enum LoginExceptionEnum implements IBaseEnum {
 
     private String message;
 
-    LoginExceptionEnum(Integer code, String message) {
+    AuthExceptionEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
