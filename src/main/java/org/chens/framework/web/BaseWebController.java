@@ -3,10 +3,10 @@ package org.chens.framework.web;
 import org.chens.core.base.BaseBackgroundFacade;
 import org.chens.core.exception.BaseExceptionEnum;
 import org.chens.core.util.StringUtils;
+import org.chens.core.vo.PageResult;
 import org.chens.core.vo.QueryPageEntity;
 import org.chens.core.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -29,8 +29,9 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @PostMapping("/pagelist")
-    public ResponseEntity<Result> pagelist(@RequestBody QueryPageEntity<T> spage) {
-        return doResponse(service.selectPage(spage));
+    @ResponseBody
+    public Result<PageResult<T>> pagelist(@RequestBody QueryPageEntity<T> spage) {
+        return service.selectPage(spage);
     }
 
     /**
@@ -40,11 +41,12 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @PostMapping("/create")
-    public ResponseEntity<Result> create(@RequestBody T t) {
+    @ResponseBody
+    public Result<Boolean> create(@RequestBody T t) {
         if (t != null) {
-            return doResponse(service.insert(t));
+            return service.insert(t);
         } else {
-           return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 
@@ -55,11 +57,12 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @PutMapping("/update")
-    public ResponseEntity<Result> update(@RequestBody T t) {
+    @ResponseBody
+    public Result<Boolean> update(@RequestBody T t) {
         if (t != null) {
-            return doResponse(service.updateById(t));
+            return service.updateById(t);
         } else {
-            return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 
@@ -70,11 +73,12 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @PostMapping("/save")
-    public ResponseEntity<Result> save(@RequestBody T t) {
+    @ResponseBody
+    public Result<Boolean> save(@RequestBody T t) {
         if (t != null) {
-            return doResponse(service.insertOrUpdate(t));
+            return service.insertOrUpdate(t);
         } else {
-            return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 
@@ -85,11 +89,12 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @GetMapping("/info/{id}")
-    public ResponseEntity<Result> getInfo(@PathVariable String id) {
+    @ResponseBody
+    public Result<T> getInfo(@PathVariable String id) {
         if (id != null) {
-            return doResponse(service.selectById(id));
+            return service.selectById(id);
         } else {
-            return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 
@@ -100,11 +105,12 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<Result> list(T t) {
+    @ResponseBody
+    public Result<List<T>> list(T t) {
         if (t != null) {
-            return doResponse(service.selectList(t));
+            return service.selectList(t);
         } else {
-            return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 
@@ -115,11 +121,12 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Result> delete(@PathVariable String id) {
+    @ResponseBody
+    public Result<Boolean> delete(@PathVariable String id) {
         if (StringUtils.isNotEmpty(id)) {
-            return doResponse(service.deleteById(id));
+            return service.deleteById(id);
         } else {
-            return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 
@@ -130,13 +137,14 @@ public abstract class BaseWebController<S extends BaseBackgroundFacade<T>, T> ex
      * @return
      */
     @DeleteMapping("/batchDelete/{id}")
-    public ResponseEntity<Result> batchDelete(@PathVariable String id) {
+    @ResponseBody
+    public Result<Boolean> batchDelete(@PathVariable String id) {
         if (StringUtils.isNotEmpty(id)) {
             String[] idArray = id.split(",");
             List<String> idList = Arrays.asList(idArray);
-            return doResponse(service.deleteBatchIds(idList));
+            return service.deleteBatchIds(idList);
         } else {
-            return doError(BaseExceptionEnum.REQUEST_NULL);
+            return Result.getError(BaseExceptionEnum.REQUEST_NULL);
         }
     }
 

@@ -21,4 +21,6 @@ public final class AuthConstants {
 
     public static final String CONTEXT_KEY_USER_TANENTID = "tenantId";
 
+    public static final String TOKEN_KEY = "Authorization";
+
 }
